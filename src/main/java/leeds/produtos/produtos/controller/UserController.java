@@ -2,13 +2,11 @@ package leeds.produtos.produtos.controller;
 
 import leeds.produtos.produtos.entity.Usuario;
 import leeds.produtos.produtos.service.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/PaginaUsuario") // pagina de onde vem as informações
@@ -20,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
     @PostMapping
-    public ResponseEntity<String> CriarUsuario(@RequestBody CriarUsuarioDto dto) {
+    public ResponseEntity<String> CriarUsuario(@RequestBody UsuarioDto dto) {
 
         var userId = userService.CriarUsuario(dto);
         return ResponseEntity.created(URI.create("/leads/" + userId)).body("Usuário " + dto.nome() + " criado com sucesso. Seu ID é: "+userId);
@@ -33,10 +31,16 @@ public class UserController {
 
         return ResponseEntity.ok(users);
     }
+    @PutMapping("/{userId}")
+    public ResponseEntity<String> AtualizarUsuario(@PathVariable("userId") String userId,@RequestBody UsuarioDto dto){
+        userService.AtualizarUsuario(userId,dto);
+        return ResponseEntity.ok("Usuario atualizado com sucesso!");
+    }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<String> DeletarUsuario(@PathVariable("userId") String userId) {
         userService.deletarUsuario(userId);
         return ResponseEntity.ok("usuario " + userId + " deletado com sucesso");
     }
+
 }

@@ -1,0 +1,30 @@
+# Criar um produto
+POST http://localhost:8080/Produtos
+Content-type: application/json
+
+{
+  "nome": "picanha",
+  "valor": "99"
+}
+###
+
+# Listar os produtos
+GET http://localhost:8080/Produtos
+###
+
+###
+
+# Atualizar um produto por ID
+PUT http://localhost:8080/Produtos
+Content-type: application/json
+
+{
+  "status": "esgotado",
+  "nome": "",
+  "valor": ""
+}
+
+###
+
+# Deleta um produto por ID
+DELETE http://localhost:8080/Produtos/6eae1242-3f5b-4fbf-b909-2691c10b6cdb

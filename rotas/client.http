@@ -1,0 +1,31 @@
+# Criar um usuário
+POST http://localhost:8080/PaginaUsuario
+Content-type: application/json
+
+{
+  "nome": "pedro",
+  "email": "pedro@gmail.com",
+  "senha": "senhaforte"
+}
+###
+
+# Listar todos os usuarios
+GET http://localhost:8080/PaginaUsuario
+
+
+###
+
+# Atualizar um usuario por ID
+PUT http://localhost:8080/PaginaUsuario/f5dd479e-5fd2-4e7e-88aa-031feb98c66c
+Content-type: application/json
+
+{
+  "nome": "rick",
+  "email": "rick@gmail.com",
+  "senha": "foda"
+}
+
+###
+
+# Deletar um usuario por ID
+DELETE http://localhost:8080/PaginaUsuario/f5dd479e-5fd2-4e7e-88aa-031feb98c66c
